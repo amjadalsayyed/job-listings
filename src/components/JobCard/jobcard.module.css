@@ -1,0 +1,13 @@
+.cardContainer {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { useTranslation } from "react-i18next";
+import { Route, Routes } from "react-router-dom";
+import JobList from "./pages/JobList/JobList";
+import JobDetails from "./pages/JobDetails/JobDetails";
+import { Container } from "@mui/material";
 
 function App() {
+  const { t, i18n } = useTranslation();
+  document.body.dir = i18n.dir();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Routes>
+        <Route path="/" element={<JobList />} />
+        <Route path="/job-details/:jobTitle" element={<JobDetails />} />
+      </Routes>
+    </Container>
   );
 }
 

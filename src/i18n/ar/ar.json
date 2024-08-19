@@ -1,0 +1,17 @@
+{
+  "job_list": "الوظائف المتاحة",
+  "langToChangeTo": "English",
+  "search": "بحث",
+  "job_title": "عنوان الوظيفة",
+  "jobcategory": "تصنيف الوظيفة",
+  "joblevel": "مستوى الوظيفة",
+  "view": "التفاصيل",
+
+  "posted_on": "تاريخ النشر",
+  "description": "وصف الوظيفة",
+  "Key_Responsibilities": "المسؤوليات",
+  "Summary": "ملخص",
+  "Required_Skills": "المهرات المطلوبة",
+  "Apply": "قدم طلبا",
+  "reset": "الغاء البحث"
+}
