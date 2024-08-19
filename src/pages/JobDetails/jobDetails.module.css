@@ -1,0 +1,38 @@
+.mainContainer {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.detailsContainer {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 60%;
+  padding: 30px;
+  border-radius: 12px;
+}
+
+.sideCardContainer {
+  width: 300px;
+  max-height: 600px;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 20px;
+}
+
+@media (max-width: 1128px) {
+  .detailsContainer {
+    width: 100%;
+  }
+  .sideCardContainer {
+    width: 100%;
+  }
+}
+/* @media (max-width: 480px) {
+  .detailsContainer {
+    width: 100%;
+  }
+  .sideCardContainer {
+    width: 100%;
+  }
+} */
