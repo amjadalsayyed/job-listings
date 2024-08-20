@@ -12,8 +12,8 @@ function App() {
   return (
     <Container>
       <Routes>
-        <Route path="/" element={<JobList />} />
-        <Route path="/job-details/:jobTitle" element={<JobDetails />} />
+        <Route path="/" exact element={<JobList />} />
+        <Route path="/job-details/:jobTitle" exact element={<JobDetails />} />
       </Routes>
     </Container>
   );

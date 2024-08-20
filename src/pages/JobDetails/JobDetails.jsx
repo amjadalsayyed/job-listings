@@ -6,40 +6,13 @@ import classes from "./jobDetails.module.css";
 import JobTitle from "../../components/jobTitle/JobTitle";
 import JobDescription from "../../components/JobDescription/JobDescription";
 import Loading from "../../components/Loading/Loading";
+import { useGetJobs } from "../../hooks/useGetJobs";
 
 const JobDetails = () => {
-  const [jobsList, setJobsList] = useState(null);
-  const [isLoading, setiIsLoading] = useState(true);
-  const { state } = useLocation(); // *********i had to use this way because there is no api provided for geting the job details for a specific job **********
-  //   console.log(state);
-  const getJobList = (itemQuery) => {
-    // get all jobs
-    setiIsLoading(true);
-    // using connecter to get the job list as it has already added the required headers
-    connector
-      .get("/jobs", {
-        params: {
-          language_profile_uuid: "ee5d991c-cdc6-4e83-b0b3-96f147208549",
-          page: 1,
-          limit: 8,
-          itemQuery: itemQuery,
-        },
-      })
-      .then((res) => {
-        // store jobs list in state
-        setJobsList(res.data.results);
-        setiIsLoading(false);
-      })
-      .catch((err) => {
-        alert(err);
-        setiIsLoading(false);
-      });
-  };
-
-  useEffect(() => {
-    // call getJobList with itemQuery params to search based on title
-    getJobList();
-  }, []);
+  const { state } = useLocation();
+  // *********i had to use this way because there is no api provided for geting the job details for a specific job **********
+  const { jobsList, isLoading } = useGetJobs();
+  // useGetJobs is a custom hooks made to saprate the logic from ui and to not reapet functionaltiy in other components
 
   return (
     <>
