@@ -6,49 +6,12 @@ import JobCard from "../../components/JobCard/JobCard";
 import classes from "./joblist.module.css";
 import { Button, Pagination } from "@mui/material";
 import Loading from "../../components/Loading/Loading";
+import { useGetJobs } from "../../hooks/useGetJobs";
 const JobList = () => {
   const { t, i18n } = useTranslation();
-  const [jobsList, setJobsList] = useState(null);
-  const [isLoading, setiIsLoading] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
 
-  const getJobList = (itemQuery) => {
-    // get all jobs
-    setiIsLoading(true);
-    // using connecter to get the job list as it has already added the required headers
-    connector
-      .get("/jobs", {
-        params: {
-          language_profile_uuid: "ee5d991c-cdc6-4e83-b0b3-96f147208549",
-          page: currentPage,
-          limit: 12,
-          itemQuery: itemQuery,
-        },
-      })
-      .then((res) => {
-        // store jobs list in state
-        setJobsList(res.data.results);
-        setiIsLoading(false);
-      })
-      .catch((err) => {
-        alert(err);
-        setiIsLoading(false);
-      });
-  };
-
-  const handleSearch = ({ itemQuery }) => {
-    // call getJobList with itemQuery params to search based on title
-    getJobList(itemQuery);
-    itemQuery !== "" &&
-      alert(
-        "The results might be empty because the Api does not filter acording to any title try (test , developer) it worked on both"
-      );
-  };
-
-  useEffect(() => {
-    // fetch initial job list on component mount
-    getJobList();
-  }, [currentPage, setCurrentPage]);
+  const { jobsList, isLoading, handleSearch, setCurrentPage } = useGetJobs();
+  // useGetJobs is a custom hooks made to saprate the logic from ui and to not reapet functionaltiy in other components
 
   return (
     <div style={{ margin: "2rem 0" }}>
